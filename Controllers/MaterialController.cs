@@ -32,6 +32,8 @@ namespace SacBackend.Controllers
             string[] arrstrNumCtrlInt
             )
         {
+            CaafiContext context = new CaafiContext();
+
             ServansdtoServiceAnswerDto servansdto = 
                 MatMaterial.servansGetAllMaterialForLoan(context, arrstrNumCtrlInt);
 

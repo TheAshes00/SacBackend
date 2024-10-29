@@ -27,7 +27,7 @@ namespace SacBackend.Controllers
 
         //--------------------------------------------------------------------------------
         //                                //CONSTRUCTORS.
-        public AdminController(ILogger<AdminController> logger, IConfiguration iConfig,)
+        public AdminController(ILogger<AdminController> logger, IConfiguration iConfig)
         {
             _logger = logger;
             _configuration = iConfig;
