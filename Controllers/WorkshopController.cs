@@ -39,6 +39,7 @@ namespace SacBackend.Controllers
             )
         {
             CaafiContext context = new CaafiContext();
+
             using var transaction = context.Database.BeginTransaction();
 
             ServansdtoServiceAnswerDto servans;
@@ -74,14 +75,13 @@ namespace SacBackend.Controllers
             string? strSearch
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
 
-                WorWorkshop.subGetPaginatedWorkshops(context,intPageNumber,intPageSize,
+                WorWorkshop.subGetPaginatedWorkshops(context, intPageNumber,intPageSize,
                     strSearch,out servans);
             }
             catch (Exception ex)
@@ -103,6 +103,7 @@ namespace SacBackend.Controllers
             )
         {
             CaafiContext context = new CaafiContext();
+
             using var transaction = context.Database.BeginTransaction();
 
             ServansdtoServiceAnswerDto servans;
@@ -133,12 +134,11 @@ namespace SacBackend.Controllers
         public IActionResult GetAllActiveWorkshops(
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
 
                 WorWorkshop.subGetAllActiveWorkshops(context, out servans);
             }
@@ -161,7 +161,9 @@ namespace SacBackend.Controllers
             DateTime dateNow = DateTime.Now;
 
             CaafiContext context = new CaafiContext();
+
             using var transaction = context.Database.BeginTransaction();
+
             transaction.CreateSavepoint("beforeAddWorkshopAttendance");
             ServansdtoServiceAnswerDto servans;
 

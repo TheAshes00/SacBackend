@@ -5,7 +5,9 @@ namespace SacBackend.Context
 {
     public class CaafiContext : DbContext
     {
-        private readonly String strConectionString = "server=localhost; database=caafi; user=root; password=archer0123";
+        // Data Source=tcp:azurecaafi.database.windows.net,1433;Initial Catalog=caafi;User Id=molly@azurecaafi;Password=archer0123.
+        private readonly String strConectionString = "Data Source=tcp:azurecaafi.database.windows.net,1433;Initial Catalog=caafi;User Id=molly@azurecaafi;Password=archer0123.";
+        //private readonly String strConectionString = "server=localhost; database=caafi; user=root; password=archer0123";
         public CaafiContext(DbContextOptions<CaafiContext> options) : base(options)
         {
         }

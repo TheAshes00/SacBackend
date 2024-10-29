@@ -43,6 +43,7 @@ namespace SacBackend.Controllers
             else
             {
                 CaafiContext context = new CaafiContext();
+
                 using var transaction = context.Database.BeginTransaction();
 
                 transaction.CreateSavepoint("beforeTutorWorkshopAdd");
@@ -93,6 +94,7 @@ namespace SacBackend.Controllers
             else
             {
                 CaafiContext context = new CaafiContext();
+
                 using var transaction = context.Database.BeginTransaction();
 
                 transaction.CreateSavepoint("beforeTutorWorkshopUpdate");
@@ -134,12 +136,12 @@ namespace SacBackend.Controllers
             string? strSearch
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
+
                 TutworTutorWorkshop.GetPaginatedTutorWorkshop(context, intPageNumber, 
                     intPageSize, strSearch, out servans);
             }
@@ -158,12 +160,12 @@ namespace SacBackend.Controllers
             int intPkWorkshop
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
+
                 TutworTutorWorkshop.subGetWorkshopTutor(context, intPkWorkshop, 
                     out servans);
             }

@@ -34,6 +34,7 @@ namespace SacBackend.Controllers
         {
             ServansdtoServiceAnswerDto servans;
             CaafiContext context = new CaafiContext();
+
             using var transaction = context.Database.BeginTransaction();
             try
             {
@@ -79,11 +80,12 @@ namespace SacBackend.Controllers
             )
         {
             ServansdtoServiceAnswerDto servans;
+
+            CaafiContext context = new CaafiContext();
+
             try
             {
-                CaafiContext context_I = new CaafiContext();
-                
-                LoaLoan.subReturnMaterial(context_I, strNmCta, out servans);
+                LoaLoan.subReturnMaterial(context, strNmCta, out servans);
             }
             catch (Exception ex) 
             {
@@ -102,7 +104,9 @@ namespace SacBackend.Controllers
             )
         {
             ServansdtoServiceAnswerDto servans;
+
             CaafiContext context = new CaafiContext();
+
             using var transaction = context.Database.BeginTransaction();
             try
             {

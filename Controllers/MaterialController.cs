@@ -32,10 +32,9 @@ namespace SacBackend.Controllers
             string[] arrstrNumCtrlInt
             )
         {
-            using var context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servansdto = 
                 MatMaterial.servansGetAllMaterialForLoan(context, arrstrNumCtrlInt);
+
             IActionResult aresult = base.Ok(servansdto);
             return aresult;
         }
@@ -50,12 +49,11 @@ namespace SacBackend.Controllers
             string? strSearch
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
 
                 MatMaterial.subPaginateAllMaterial(context, intPageNumber, intPageSize,
                     strSearch, out servans);
@@ -89,6 +87,7 @@ namespace SacBackend.Controllers
             else
             {
                 CaafiContext context = new CaafiContext();
+
                 using var transaction = context.Database.BeginTransaction();
 
                 transaction.CreateSavepoint("beforeMaterialUpdate");
@@ -136,6 +135,7 @@ namespace SacBackend.Controllers
             else
             {
                 CaafiContext context = new CaafiContext();
+
                 using var transaction = context.Database.BeginTransaction();
 
                 transaction.CreateSavepoint("beforeMaterialAdd");

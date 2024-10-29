@@ -32,7 +32,8 @@ namespace VueAppTest1.Server.Controllers
 
         //-------------------------------------------------------------------------------------------------------------
         //                                                  //CONSTRUCTORS.
-        public StudentController(ILogger<StudentController> logger,IConfiguration iConfig, MongoDbService mongoDbService)
+        public StudentController(ILogger<StudentController> logger,IConfiguration iConfig, 
+            MongoDbService mongoDbService)
         {
             _logger = logger;
             _configuration = iConfig;
@@ -45,9 +46,10 @@ namespace VueAppTest1.Server.Controllers
             string strNmCta
             )
         {
-            using var context = new CaafiContext();
+            CaafiContext context = new CaafiContext();
 
             ServansdtoServiceAnswerDto servansdto = StuStudent.servansGetStudent(context, strNmCta);
+
             IActionResult aresult = base.Ok(servansdto);
             return aresult;
         }
@@ -60,12 +62,13 @@ namespace VueAppTest1.Server.Controllers
             )
         {
             ServansdtoServiceAnswerDto servansdto;
-            using var context = new CaafiContext();
+            CaafiContext context = new CaafiContext();
+
             using var transaction = context.Database.BeginTransaction();
 
             try
             {
-                servansdto = StuStudent.servansSaveStudent(context,getstudtoin);
+                servansdto = StuStudent.servansSaveStudent(context, getstudtoin);
                 transaction.Commit();
             }
             catch (
@@ -85,9 +88,10 @@ namespace VueAppTest1.Server.Controllers
         public IActionResult GetAllAcademicEntities(
             )
         {
-            using var context = new CaafiContext();
+            CaafiContext context = new CaafiContext();
 
             ServansdtoServiceAnswerDto servansdto = AcentAcademicEntity.servansGetAllAcademicEntities(context);
+
             IActionResult aresult = base.Ok(servansdto);
             return aresult;
         }

@@ -74,7 +74,8 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.AllowAnyHeader().AllowAnyMethod();
-            policy.WithOrigins("http://localhost:5173");
+            policy.AllowAnyOrigin();
+            //policy.WithOrigins("https://nice-mud-08163d41e.5.azurestaticapps.net");
         })
 );
 
@@ -85,7 +86,7 @@ builder.Services.Configure<MongoDbSettings>(
 builder.Services.AddSingleton<MongoDbService>();
 
 //                                                          // Context config
-builder.Services.AddDbContext<Caafi2Context>(options =>
+builder.Services.AddDbContext<CaafiContext>(options =>
 {
     options.UseMySql(strConnectionString, ServerVersion.AutoDetect(strConnectionString));
 });

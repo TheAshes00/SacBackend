@@ -27,7 +27,7 @@ namespace SacBackend.Controllers
 
         //--------------------------------------------------------------------------------
         //                                //CONSTRUCTORS.
-        public AdminController(ILogger<AdminController> logger, IConfiguration iConfig)
+        public AdminController(ILogger<AdminController> logger, IConfiguration iConfig,)
         {
             _logger = logger;
             _configuration = iConfig;
@@ -89,8 +89,9 @@ namespace SacBackend.Controllers
             AdmLogAdminLoginDto.In loginadmin
         )
         {
-            CaafiContext context = new CaafiContext();
             ServansdtoServiceAnswerDto servansdto;
+
+            CaafiContext context = new CaafiContext();
 
             if (
                 loginadmin == null
@@ -159,9 +160,9 @@ namespace SacBackend.Controllers
         public IActionResult GetAdmins(
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
+
+            CaafiContext context = new CaafiContext();
 
             try
             {
@@ -188,10 +189,11 @@ namespace SacBackend.Controllers
             DateTime? dateEnd
             )
         {
-            CaafiContext context = new CaafiContext();
             ServansdtoServiceAnswerDto servans;
 
-            if(
+            CaafiContext context = new CaafiContext();
+
+            if (
                 strNmCta == null ||
                 strNmCta.Length < 7
                 )
@@ -221,9 +223,10 @@ namespace SacBackend.Controllers
             DateTime? datenEnd
             )
         {
-            using var context = new CaafiContext();
 
             ServansdtoServiceAnswerDto servans;
+
+            CaafiContext context = new CaafiContext();
 
             TutworTutorWorkshop.subGetTutorReport(context, intPkTutor, dateStart, 
                 datenEnd, out servans);

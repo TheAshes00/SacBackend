@@ -5,7 +5,7 @@ using SacBackend.Context;
 using SacBackend.DTO;
 using SacBackend.Models;
 
-namespace VueAppTest1.Server.Controllers
+namespace SacBackend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -40,7 +40,7 @@ namespace VueAppTest1.Server.Controllers
         {
             ServansdtoServiceAnswerDto servansdto;
             try
-            {   
+            {
                 List<AcademicEntity> darrWorkshop = new List<AcademicEntity>();
                 CaafiContext caafi = new CaafiContext();
 
@@ -49,10 +49,10 @@ namespace VueAppTest1.Server.Controllers
                 List<Student> student = caafi.Student.ToList();
 
                 darrWorkshop = caafi.AcademicEntity.ToList();
-                
+
                 var y = darrWorkshop.Find(s => s.intPk == 1);
 
-                servansdto = new ServansdtoServiceAnswerDto(200, 
+                servansdto = new ServansdtoServiceAnswerDto(200,
                     student.ToList().Select(n => new
                     {
                         name = n.strName,
@@ -61,11 +61,11 @@ namespace VueAppTest1.Server.Controllers
             }
             catch (Exception ex)
             {
-                servansdto= new ServansdtoServiceAnswerDto(400,ex.Message);
+                servansdto = new ServansdtoServiceAnswerDto(400, ex.Message);
             }
-            
 
-            
+
+
             return servansdto;
         }
     }

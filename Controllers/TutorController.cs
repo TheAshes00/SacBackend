@@ -37,6 +37,7 @@ namespace SacBackend.Controllers
             )
         {
             ServansdtoServiceAnswerDto servans;
+
             if (
                 !ModelState.IsValid
                 ) 
@@ -47,10 +48,10 @@ namespace SacBackend.Controllers
             else
             {
                 CaafiContext context = new CaafiContext();
+
                 using var transaction = context.Database.BeginTransaction();
 
                 transaction.CreateSavepoint("beforeTutorAdd");
-
 
                 try
                 {
@@ -96,10 +97,10 @@ namespace SacBackend.Controllers
             else
             {
                 CaafiContext context = new CaafiContext();
+
                 using var transaction = context.Database.BeginTransaction();
 
                 transaction.CreateSavepoint("beforeTutorUpdate");
-
 
                 try
                 {
@@ -135,12 +136,11 @@ namespace SacBackend.Controllers
             string? strSearch
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
 
                 TutTutor.GetPaginatedTutors(context, intPageNumber, intPageSize,
                     strSearch, out servans);
@@ -160,12 +160,11 @@ namespace SacBackend.Controllers
         public IActionResult GetAllActiveTutors(
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
 
                 TutTutor.subGetAllActiveTutor(context, out servans);
             }
@@ -184,12 +183,11 @@ namespace SacBackend.Controllers
         public IActionResult GetAllTutors(
             )
         {
-            CaafiContext context = new CaafiContext();
-
             ServansdtoServiceAnswerDto servans;
 
             try
             {
+                CaafiContext context = new CaafiContext();
 
                 TutTutor.subGetAllTutor(context, out servans);
             }
