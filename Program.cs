@@ -74,8 +74,8 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.AllowAnyHeader().AllowAnyMethod();
-            policy.AllowAnyOrigin();
-            //policy.WithOrigins("https://nice-mud-08163d41e.5.azurestaticapps.net");
+            //policy.AllowAnyOrigin();
+            policy.WithOrigins("https://nice-mud-08163d41e.5.azurestaticapps.net");
         })
 );
 
