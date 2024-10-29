@@ -72,10 +72,10 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors(options =>
     options.AddPolicy(strspecifiedOrigins,
         policy =>
-        {
-            policy.AllowAnyHeader().AllowAnyMethod();
-            //policy.AllowAnyOrigin();
-            policy.WithOrigins("https://nice-mud-08163d41e.5.azurestaticapps.net");
+        {;
+            policy.WithOrigins("https://nice-mud-08163d41e.5.azurestaticapps.net")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
         })
 );
 
@@ -111,3 +111,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
