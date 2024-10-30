@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "secrets2": {
-      "type": "secrets.user",
+      "ignored": "true",
+      "type": "secrets",
       "dynamicId": null
     }
   }
