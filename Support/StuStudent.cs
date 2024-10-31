@@ -80,7 +80,7 @@ namespace SacBackend.Support
                     stStudent.AcademicEntEntity.intType
                 );
 
-                servans = new(200,""+student?.AcademicEntEntity, "",getsetstuout);
+                servans = new(200,""+(student?.AcademicEntEntity == null), "",getsetstuout);
             }
 
             return servans;
