@@ -1,4 +1,5 @@
-﻿using SacBackend.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using SacBackend.Context;
 using SacBackend.DAO.Interfaces;
 using SacBackend.DTO.Student;
 using SacBackend.Models;
@@ -71,6 +72,17 @@ namespace SacBackend.DAO
             )
         {
             return context_I.Student.Where(student => student.strNmCta.Equals(strNmCta_I)).Any();
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
+        public static Student? stuGetStudentByPkIncludeAcademy(
+            CaafiContext context_I,
+            string strNmCta_I
+            )
+        {
+            return context_I.Student.
+                Where(stu => stu.strNmCta.CompareTo(strNmCta_I) == 0).Include(st => st.AcademicEntEntity).
+                FirstOrDefault();
         }
 
         //--------------------------------------------------------------------------------------------------------------

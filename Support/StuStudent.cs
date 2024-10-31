@@ -60,23 +60,26 @@ namespace SacBackend.Support
         {
             ServansdtoServiceAnswerDto servans;
 
-            var Students = context_I.Student.Include("AcademicEntEntity").ToList();
-            Student? stStudent = Students.FirstOrDefault(s => s.strNmCta.Equals(strNmCta_I));
+            Student? stStudent = StudaoStudentDao.stuGetStudentByPkIncludeAcademy(context_I, strNmCta_I);
 
             if (
                 stStudent == null
                 )
             {
                 servans = new(400, "User with identification number " + strNmCta_I + " does not exist. Please try again",
-                    "User strNmCta does not exists", stStudent);
+                    "User strNmCta does not exists", "");
             }
             else
             {
-
                 GetsetstudGetSetStudentDto.Out getsetstuout = new GetsetstudGetSetStudentDto.Out(
-                    stStudent.strName, stStudent.strNmCta, stStudent.strSurename, stStudent.strBachelors,
-                    stStudent.AcademicEntEntity?.strAcademyName, stStudent.AcademicEntEntity.intType
-                    );
+                    stStudent.strName, 
+                    stStudent.strNmCta, 
+                    stStudent.strSurename, 
+                    stStudent.strBachelors,
+                    stStudent.AcademicEntEntity.strAcademyName, 
+                    stStudent.AcademicEntEntity.intType
+                );
+
                 servans = new(200, getsetstuout);
             }
 
