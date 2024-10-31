@@ -59,7 +59,7 @@ namespace SacBackend.Support
             )
         {
             ServansdtoServiceAnswerDto servans;
-            Student? student = context_I.Student.FirstOrDefault(x => x.strNmCta.CompareTo(strNmCta_I) == 0 );
+
             Student? stStudent = StudaoStudentDao.stuGetStudentByPkIncludeAcademy(context_I, strNmCta_I);
 
             if (
@@ -80,7 +80,7 @@ namespace SacBackend.Support
                     stStudent.AcademicEntEntity.intType
                 );
 
-                servans = new(200,""+(student?.AcademicEntEntity == null), "",getsetstuout);
+                servans = new(200,getsetstuout);
             }
 
             return servans;
